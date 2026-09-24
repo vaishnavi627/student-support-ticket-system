@@ -1,0 +1,17 @@
+import os, requests
+BASE_URL=os.getenv("API_BASE_URL","http://127.0.0.1:8000")
+def request(method,path,**kwargs):
+    r=requests.request(method,f"{BASE_URL}{path}",timeout=30,**kwargs)
+    r.raise_for_status()
+    return r.json()
+def create_ticket(p): return request("POST","/tickets",json=p)
+def get_tickets(): return request("GET","/tickets")
+def get_ticket(i): return request("GET",f"/tickets/{i}")
+def get_activities(i): return request("GET",f"/tickets/{i}/activities")
+def assign_ticket(i,p): return request("PUT",f"/tickets/{i}/assign",json=p)
+def update_status(i,p): return request("PUT",f"/tickets/{i}/status",json=p)
+def override_priority(i,p): return request("PUT",f"/tickets/{i}/priority",json=p)
+def suggest_response(i): return request("POST",f"/tickets/{i}/suggest-response")
+def send_staff_message(i,p): return request("POST",f"/tickets/{i}/message",json=p)
+def resolve_ticket(i,p): return request("POST",f"/tickets/{i}/resolve",json=p)
+def dashboard_summary(): return request("GET","/dashboard/summary")
