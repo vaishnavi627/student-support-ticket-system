@@ -86,13 +86,26 @@ if role == "Student":
     with st.form("create_ticket_form"):
         col1, col2 = st.columns(2)
         with col1:
-            name = st.text_input("Full Name", placeholder="e.g. Gowtham A S")
+            name = st.text_input(
+                "Full Name",
+                value="Gowtham A S",
+                placeholder="e.g. Gowtham A S",
+            )
         with col2:
-            email = st.text_input("Email Address", placeholder="e.g. student@college.edu")
+            email = st.text_input(
+                "Email Address",
+                value="student@college.edu",
+                placeholder="e.g. student@college.edu",
+            )
 
-        title = st.text_input("Subject", placeholder="Brief description of your issue")
+        title = st.text_input(
+            "Subject",
+            value="Fee payment issue",
+            placeholder="Brief description of your issue",
+        )
         desc = st.text_area(
             "Describe Your Issue",
+            value="I paid my semester fee, but the student portal still shows an outstanding balance.",
             placeholder="Provide as much detail as possible so we can help you faster...",
             height=160,
         )
