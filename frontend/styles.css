@@ -92,11 +92,15 @@ hr { border-color: var(--border-subtle) !important; margin: 2rem 0 !important; }
 /* ── Inputs & Selects ────────────────────────────────────────────────────── */
 .stTextInput > div > div > input,
 .stTextArea > div > div > textarea,
-.stSelectbox > div > div {
+.stSelectbox > div > div,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
     background: var(--bg-glass) !important;
     border: 1px solid var(--border-subtle) !important;
     border-radius: var(--radius-md) !important;
     color: var(--text-primary) !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    caret-color: var(--text-primary) !important;
     font-family: 'Inter', sans-serif !important;
     transition: var(--transition) !important;
 }
@@ -106,6 +110,17 @@ hr { border-color: var(--border-subtle) !important; margin: 2rem 0 !important; }
     border-color: var(--accent-purple) !important;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
     outline: none !important;
+}
+
+/* Streamlit renders the form controls with a light surface. */
+html body [data-testid="stTextInputField"],
+html body [data-testid="stTextAreaRootElement"],
+html body input[aria-label="Full Name"],
+html body input[aria-label="Email Address"],
+html body input[aria-label="Subject"] {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    caret-color: #111827 !important;
 }
 
 /* Input labels */
